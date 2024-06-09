@@ -5,6 +5,7 @@ import 'package:flutter_complete_project/core/theming/styles.dart';
 import 'package:flutter_complete_project/core/widget/app_text_buttoms.dart';
 import 'package:flutter_complete_project/core/widget/app_text_form_field.dart';
 import 'package:flutter_complete_project/features/login/ui/widget/already_have_account_text.dart';
+import 'package:flutter_complete_project/features/login/ui/widget/email_and_password.dart';
 import 'package:flutter_complete_project/features/login/ui/widget/terms_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,42 +40,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyles.font14grayRegular,
                 ),
                 verticalSpace(40),
-                Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        AppTextFormField(hintText: 'Email'),
-                        verticalSpace(18),
-                        AppTextFormField(
-                          hintText: 'Password',
-                          isObscureText: isObscureText,
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isObscureText = !isObscureText;
-                              });
-                            },
-                            child: Icon(isObscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                        ),
-                        verticalSpace(25),
-                        Align(
-                            alignment: Alignment.centerRight,
-                            child: Text('Forgot Password?',
-                                style: TextStyles.font13BlueRegular)),
-                        verticalSpace(41),
+                EmailAndPassword(),
+                verticalSpace(25),
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: Text('Forgot Password?',
+                        style: TextStyles.font13BlueRegular)),
+                verticalSpace(41),
 
-                        AppTextButtoms(buttomText: 'Login',onPressed: (){}, buttomTextStyle:TextStyles.font16WhiteSemiBold,),
-                        verticalSpace(16),
+                AppTextButtoms(buttomText: 'Login',onPressed: (){}, buttomTextStyle:TextStyles.font16WhiteSemiBold,),
+                verticalSpace(16),
 
-                        TermsAndConditionsText(),
-                        verticalSpace(60),
+                TermsAndConditionsText(),
+                verticalSpace(60),
 
-                        AlreadyHaveAccountText()
-                      ],
-                    )),
+                AlreadyHaveAccountText()
               ],
             ),
           ),
