@@ -50,6 +50,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: context.read<LoginCubit>().formKey,
         child: Column(
           children: [
             AppTextFormField(
@@ -58,7 +59,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                   .read<LoginCubit>()
                   .emailController,
               validator: (value) {
-                if (value!.isEmpty || value == null || !AppRegex.isEmail(value)) {
+                if ( value == null || !AppRegex.isEmail(value)) {
                   return 'please enter valid email';
                 }
               },
@@ -71,7 +72,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                   .read<LoginCubit>()
                   .passwordController,
               validator: (value) {
-                if (value!.isEmpty || value == null) {
+                if ( value == null|| !AppRegex.isPassword(value)) {
                   return 'please enter valid password';
                 }
               },
