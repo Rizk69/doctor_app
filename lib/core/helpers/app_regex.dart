@@ -12,6 +12,9 @@ class AppRegex{
   static bool hasUppercase(String password) {
     return password.contains(RegExp(r'[A-Z]'));
   }
+  static bool isPhoneNumber(String phone) {
+    return RegExp(r'^(010|011|012|015)[0-9]{8}$').hasMatch(phone);
+  }
   static bool hasNumbers(String password) {
     return password.contains(RegExp(r'[0-9]'));
   }

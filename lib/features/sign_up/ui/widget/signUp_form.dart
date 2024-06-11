@@ -3,17 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_project/core/helpers/app_regex.dart';
 import 'package:flutter_complete_project/core/helpers/spacing.dart';
 import 'package:flutter_complete_project/core/widget/app_text_form_field.dart';
-import 'package:flutter_complete_project/features/login/logic/login_cubit.dart';
 import 'package:flutter_complete_project/features/login/ui/widget/password_validation_text.dart';
+import 'package:flutter_complete_project/features/sign_up/logic/sign_up_cubit.dart';
 
-class EmailAndPassword extends StatefulWidget {
-  const EmailAndPassword({Key? key}) : super(key: key);
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({Key? key}) : super(key: key);
 
   @override
-  State<EmailAndPassword> createState() => _EmailAndPasswordState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _EmailAndPasswordState extends State<EmailAndPassword> {
+class _SignUpFormState extends State<SignUpForm> {
   bool isObscureText = true;
   bool hasLowercase = false;
   bool hasUppercase = false;
@@ -26,7 +26,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    passwordController = context.read<LoginCubit>().passwordController;
+    passwordController = context.read<SignUpCubit>().passwordController;
     setUpPasswordControllerListener();
   }
 
@@ -46,12 +46,34 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: context.read<LoginCubit>().formKey,
+        key: context.read<SignUpCubit>().formKey,
         child: Column(
           children: [
             AppTextFormField(
+              hintText: 'Name',
+              controller: context.read<SignUpCubit>().nameController,
+              validator: (value) {
+                if (value == null ) {
+                  return 'please enter valid name';
+                }
+              },
+            ),
+            verticalSpace(18),
+
+            AppTextFormField(
+              hintText: 'Phone Number',
+              controller: context.read<SignUpCubit>().phoneController,
+              validator: (value) {
+                if (value == null || !AppRegex.isPhoneNumber(value)) {
+                  return 'please enter valid phone number';
+                }
+              },
+            ),
+            verticalSpace(18),
+
+            AppTextFormField(
               hintText: 'Email',
-              controller: context.read<LoginCubit>().emailController,
+              controller: context.read<SignUpCubit>().emailController,
               validator: (value) {
                 if (value == null || !AppRegex.isEmail(value)) {
                   return 'please enter valid email';
@@ -61,7 +83,27 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             verticalSpace(18),
             AppTextFormField(
               hintText: 'Password',
-              controller: context.read<LoginCubit>().passwordController,
+              controller: context.read<SignUpCubit>().passwordController,
+              validator: (value) {
+                if (value == null || !AppRegex.isPassword(value)) {
+                  return 'please enter valid password';
+                }
+              },
+              isObscureText: isObscureText,
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: Icon(
+                    isObscureText ? Icons.visibility_off : Icons.visibility),
+              ),
+            ),
+            verticalSpace(18),
+            AppTextFormField(
+              hintText: 'Password Confirmation',
+              controller: context.read<SignUpCubit>().passwordConfirmationController,
               validator: (value) {
                 if (value == null || !AppRegex.isPassword(value)) {
                   return 'please enter valid password';
