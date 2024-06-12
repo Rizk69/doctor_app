@@ -9,23 +9,25 @@ class DontHaveAccountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-              text: 'Don\'t have an account yet?',
-              style: TextStyles.font13darkBlueRegular),
-          const TextSpan(text: ' '),
-          TextSpan(
-              text: 'Sign Up ',
-              style: TextStyles.font13BlueSemiBold,
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  context.pushNamed(Routes.signUpScreen);
-                })
-        ],
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+                text: 'Don\'t have an account yet?',
+                style: TextStyles.font13darkBlueRegular),
+            const TextSpan(text: ' '),
+            TextSpan(
+                text: 'Sign Up ',
+                style: TextStyles.font13BlueSemiBold,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    context.pushNamed(Routes.signUpScreen);
+                  })
+          ],
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,
     );
   }
 }

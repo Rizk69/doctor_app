@@ -9,23 +9,25 @@ class AlreadyHaveAccountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-              text: 'Already have an account yet?',
-              style: TextStyles.font13darkBlueRegular),
-          const TextSpan(text: ' '),
-          TextSpan(
-              text: 'Login',
-              style: TextStyles.font13BlueSemiBold,
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  context.pushNamed(Routes.loginScreen);
-                })
-        ],
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+                text: 'Already have an account yet?',
+                style: TextStyles.font13darkBlueRegular),
+            const TextSpan(text: ' '),
+            TextSpan(
+                text: 'Login',
+                style: TextStyles.font13BlueSemiBold,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    context.pushNamed(Routes.loginScreen);
+                  })
+          ],
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,
     );
   }
 }

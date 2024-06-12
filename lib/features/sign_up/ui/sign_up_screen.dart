@@ -7,6 +7,7 @@ import 'package:flutter_complete_project/features/login/ui/widget/dont_have_acco
 import 'package:flutter_complete_project/features/login/ui/widget/login_bloc_listener.dart';
 import 'package:flutter_complete_project/features/login/ui/widget/terms_text.dart';
 import 'package:flutter_complete_project/features/sign_up/logic/sign_up_cubit.dart';
+import 'package:flutter_complete_project/features/sign_up/ui/widget/already_have_account_text.dart';
 import 'package:flutter_complete_project/features/sign_up/ui/widget/signUp_bloc_listener.dart';
 import 'package:flutter_complete_project/features/sign_up/ui/widget/signUp_form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,8 +51,8 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 verticalSpace(16),
                 TermsAndConditionsText(),
-                verticalSpace(60),
-                DontHaveAccountText(),
+                verticalSpace(40),
+                AlreadyHaveAccountText(),
                 const SignUpBlocListener(),
               ],
             ),

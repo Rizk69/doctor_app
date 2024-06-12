@@ -25,7 +25,6 @@ class SignUpBlocListener extends StatelessWidget {
                 child: CircularProgressIndicator(
                   color: ColorsManager.mainBlue,
                 ),
-
               );
             },
           );
@@ -35,15 +34,25 @@ class SignUpBlocListener extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                icon: const Icon(Icons.error,color: Colors.red,size: 32,),
+                icon: const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                  size: 32,
+                ),
                 title: const Text('Error'),
-                content: Text(message,style:TextStyles.font13darkBlueMedium.copyWith(color: ColorsManager.darkBlue)),
+                content: Text(message,
+                    style: TextStyles.font13darkBlueMedium
+                        .copyWith(color: ColorsManager.darkBlue)),
                 actions: [
                   TextButton(
                     onPressed: () {
                       context.pop();
                     },
-                    child:  Text('OK',style: TextStyles.font13BlueSemiBold.copyWith(fontSize: 14.sp),),
+                    child: Text(
+                      'OK',
+                      style: TextStyles.font13BlueSemiBold
+                          .copyWith(fontSize: 14.sp),
+                    ),
                   )
                 ],
               );

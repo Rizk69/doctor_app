@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 verticalSpace(16),
 
                 TermsAndConditionsText(),
-                verticalSpace(60),
+                verticalSpace(40),
 
                 const DontHaveAccountText(),
                 const LoginBlocListener(),
@@ -64,6 +64,7 @@ class LoginScreen extends StatelessWidget {
 
   void validateThenLogin(BuildContext context) {
     if(context.read<LoginCubit>().formKey.currentState!.validate()){
-      context.read<LoginCubit>().emitLoginState(LoginRequestBody(email: context.read<LoginCubit>().emailController.text, password: context.read<LoginCubit>().passwordController.text));
+      context.read<LoginCubit>().emitLoginState(
+      );
   }
 }}
